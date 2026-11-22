@@ -16,7 +16,6 @@ for (const width of [390, 1440]) {
     await page.goto(base + path, { waitUntil: "load" });
     await page.addScriptTag({ content: axeSource });
     const result = await page.evaluate(async () =>
-      // eslint-disable-next-line no-undef
       axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"] } }),
     );
     const serious = result.violations.filter((v) => ["serious", "critical"].includes(v.impact));
