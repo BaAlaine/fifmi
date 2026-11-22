@@ -2,6 +2,11 @@
   command = "npm run build"
   publish = ".next"
 
+# Next.js runtime. Listed explicitly so Netlify always serves the app's routes,
+# even if framework detection or UI build settings miss it (that shows Netlify's generic 404).
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [build.environment]
   NODE_VERSION = "22"
   # Show labelled [CMS: ...] placeholders on deploy previews only, never in production.
