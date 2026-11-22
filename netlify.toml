@@ -1,0 +1,21 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Show labelled [CMS: ...] placeholders on deploy previews only, never in production.
+  NEXT_PUBLIC_SHOW_CMS_PLACEHOLDERS = "false"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_SHOW_CMS_PLACEHOLDERS = "true"
+
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_SHOW_CMS_PLACEHOLDERS = "true"
+
+# Canonical host is fifmi.org (matches the current WordPress sitemaps).
+[[redirects]]
+  from = "https://www.fifmi.org/*"
+  to = "https://fifmi.org/:splat"
+  status = 301
+  force = true
